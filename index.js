@@ -53,15 +53,32 @@ function grabEpisodes(e) {
 
     console.log(ep[epId])
 
-    let renderedEpisode = document.createElement("p")
-    renderedEpisode.innerHTML = `<p>You picked epsiode no. ${episode} from season ${season}.</p>
-    <p>The title is ${ep[epId]["title"]}. It was directed by ${ep[epId]["director"]} and written by ${ep[epId]["writers"]}. It aired on ${ep[epId]["air_date"]}.</p> 
-    <p><strong>Plot:</strong> ${ep[epId]["plot"]}</p>
-    <p><strong>Trivia:</strong> ${ep[epId]["trivia"]}</p>
-    <p><strong>Quote:</strong> ${ep[epId]["quote"]}</p>`
+    // let previousSelection = document.getElementsByClassName("requested-episode");
+    // console.log(previousSelection)
+    // previousSelection.remove();
+
+    let renderedEpisode = document.createElement("div")
+    renderedEpisode.id = "episode-info"
+    renderedEpisode.innerHTML = `<h3>Season ${season}. <br />Epsiode ${episode}</h3>
+    <h1>${ep[epId]["title"]}</h1>
+    <h4>${ep[epId]["air_date"]}</h4>
+    <p>Directed by: ${ep[epId]["director"]}</p> 
+    <p>Written by: ${ep[epId]["writers"]}.</p> 
+        <div id="plot">
+        <p><strong>Plot:</strong> ${ep[epId]["plot"]}</p>
+        </div>
+        
+        <div id="trivia">
+        <p><strong>Trivia:</strong> ${ep[epId]["trivia"]}</p>
+        </div>
+    
+        <div id=quote>
+        <p><strong>Quote:</strong> ${ep[epId]["quote"]}</p>
+        </div>
+        `
 
     putHere = document.querySelector("#episode-info")
-    putHere.append(renderedEpisode)
+    putHere.replaceWith(renderedEpisode)
 
     form.reset();
 
